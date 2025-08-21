@@ -14,13 +14,17 @@ Automated n8n workflow that accepts incoming leads from a contact form and class
 - 5: If the lead is classified as "Hot", a Slack notification is sent to the sales team channel
 - 6: After a 2 min delay, a follow-up email is sent to the lead to keep them warm.
 ---
-#### Project source
+#### Workflow source code link (json)
+
 The project source code is available in json format here [./workflow_json/lead_processor_workflow.json](./workflow_json/lead_processor_workflow.json)
 
-#### Screenshots
+#### Workflow Screenshots
 ### ![Main workflow on n8n](./screenshots/lead_processor_workflow.png) Main workflow on n8n
 ---
 ### ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png) Trigger form - Tally
+
+The form is available here [https://tally.so/r/3ERgrl] (https://tally.so/r/3ERgrl)
+
 ---
 ### ![Airtable Storage](./screenshots/lead_processor_airtable.png) (Airtable Storage)
 ---

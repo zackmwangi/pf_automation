@@ -14,13 +14,13 @@
 6: After a 2 min delay, a follow-up email is sent to the lead to keep them warm.
 ---
 #### Project source
-The project source code is available in json format here [./workflow_json/lead_processor_workflow.json]
+The project source code is available in json format here [./workflow_json/lead_processor_workflow.json](./workflow_json/lead_processor_workflow.json)
 
 #### Screenshots
- Main workflow on n8n
- Trigger form - Tally
- Airtable
- Slack notification
+ - ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png)(Trigger form - Tally)
+ - ![Main workflow on n8n](./screenshots/lead_processor_workflow.png)(Main workflow on n8n)
+ - ![Airtable Storage](./screenshots/lead_processor_airtable.png)(Airtable Storage)
+ - ![Slack notification](./screenshots/lead_processor_slack.png)(Slack notification)
 
 
 ---
@@ -30,9 +30,9 @@ Scoric logic is driven by the budget amount and interest level expressed on the 
  - Initial score is 0 points
 
  - A higher budget scores "hotter"
-    - £ 1-1999 - Cold (+10)
-    - £ 2000-4999 - Warm (+35)
-    - £ 5000+ - Hot (+60)
+    - £1-£1999 - Cold (+10 points)
+    - £2000- £4999 - Warm (+35 points)
+    - £5000+ - Hot (+60 points)
 
  - A higher level of interest scores "hotter"
     - High interest - (+35)
@@ -40,13 +40,14 @@ Scoric logic is driven by the budget amount and interest level expressed on the 
     - Low interest - (+6)
 
  The final score range is:
- 0-49 -> Cold
- 50-79 -> Warm
- 80-100 -> Hot
+ - 0-49 points -> Cold
+ - 50-79 points -> Warm
+ - 80-100 points -> Hot
 
   Examples:
-  1: £ 5200 budget with high interest = 60+35 = 95 -> Hot
-  2: £ 4000 budget with medium interest = 35+20 = 55 -> Warm
+
+  - 1: £5200 budget with high interest = 60+35 = 95 points -> Hot
+  - 2: £4000 budget with medium interest = 35+20 = 55 points -> Warm
 
 ### Assumptions, Limitations and future improvements
 - We can accomodate and adapt the workflow logic for more data sources, such as typeform, etc

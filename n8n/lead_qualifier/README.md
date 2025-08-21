@@ -63,4 +63,4 @@ Scoric logic is driven by the budget amount and interest level expressed on the 
 - We can clean up the logic to make it more robust in input validation, add nore data stores, etc.
 
 ### Conclusion
-This workflow provides a useful, simple and highly adaptable automation that saves lots of time that would be used hopping across tools. It can be further expanded or customized as required.
+This workflow provides a useful, simple and highly adaptable automation that saves the user lots of time that would otherwise be wasted hopping across tools. It can be further expanded or customized as required.

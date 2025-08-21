@@ -1,5 +1,5 @@
 # Project Name: N8N Lead classifier workflow
-## Description: Automated workflow that accepts incoming leads from a contact form and classifies them as Hot, Medium or cold. I then stores them in an online spreadsheet(Airtable), Notifies the slaes team via Slack for Hot leads and also follows up via Email with the lead.
+## Description: Automated n8n workflow that accepts incoming leads from a contact form and classifies them as Hot, Medium or cold. I then stores them in an online spreadsheet(Airtable), Notifies the slaes team via Slack for Hot leads and also follows up via Email with the lead.
 
 ## Project by: Zack Mwangi - [zackmwangi@gmail.com]
 ## Tools: n8n cloud, airtable, tally.so, Slack, Email
@@ -17,10 +17,10 @@
 The project source code is available in json format here [./workflow_json/lead_processor_workflow.json](./workflow_json/lead_processor_workflow.json)
 
 #### Screenshots
-### - ![Main workflow on n8n](./screenshots/lead_processor_workflow.png)(Main workflow on n8n)
-### - ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png)(Trigger form - Tally)
-### - ![Airtable Storage](./screenshots/lead_processor_airtable.png)(Airtable Storage)
-### - ![Slack notification](./screenshots/lead_processor_slack.png)(Slack notification)
+### ![Main workflow on n8n](./screenshots/lead_processor_workflow.png)(Main workflow on n8n)
+### ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png)(Trigger form - Tally)
+### ![Airtable Storage](./screenshots/lead_processor_airtable.png)(Airtable Storage)
+### ![Slack notification](./screenshots/lead_processor_slack.png)(Slack notification)
 
 
 ---

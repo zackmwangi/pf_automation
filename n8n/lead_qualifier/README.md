@@ -53,7 +53,6 @@ Scoric logic is driven by the budget amount and interest level expressed on the 
  - 80-100 points -> Hot
 
   #### Examples:
-
   - 1: £5200 budget with high interest = 60+35 = 95 points -> Hot
   - 2: £4000 budget with medium interest = 35+20 = 55 points -> Warm
 

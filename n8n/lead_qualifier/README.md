@@ -6,21 +6,24 @@
 
 ---
 ### Project Flow
-1: The workflow is triggered by a user submitting a form built with tally.so
-2: The submitted form data is sanitized to remove metadata from tally.so
-3: A lead score is calculated and assigned, based on the scoring logic below:
-4: The lead is then stored in an Airtable table.
-5: If the lead is classified as "Hot", a Slack notification is sent to the sales team channel
-6: After a 2 min delay, a follow-up email is sent to the lead to keep them warm.
+- 1: The workflow is triggered by a user submitting a form built with tally.so
+- 2: The submitted form data is sanitized to remove metadata from tally.so
+- 3: A lead score is calculated and assigned, based on the scoring logic below:
+- 4: The lead is then stored in an Airtable table.
+- 5: If the lead is classified as "Hot", a Slack notification is sent to the sales team channel
+- 6: After a 2 min delay, a follow-up email is sent to the lead to keep them warm.
 ---
 #### Project source
 The project source code is available in json format here [./workflow_json/lead_processor_workflow.json](./workflow_json/lead_processor_workflow.json)
 
 #### Screenshots
-### ![Main workflow on n8n](./screenshots/lead_processor_workflow.png)(Main workflow on n8n)
-### ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png)(Trigger form - Tally)
-### ![Airtable Storage](./screenshots/lead_processor_airtable.png)(Airtable Storage)
-### ![Slack notification](./screenshots/lead_processor_slack.png)(Slack notification)
+### ![Main workflow on n8n](./screenshots/lead_processor_workflow.png) Main workflow on n8n
+---
+### ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png) Trigger form - Tally
+---
+### ![Airtable Storage](./screenshots/lead_processor_airtable.png) (Airtable Storage)
+---
+### ![Slack notification](./screenshots/lead_processor_slack.png) (Slack notification)
 
 
 ---

@@ -17,10 +17,10 @@
 The project source code is available in json format here [./workflow_json/lead_processor_workflow.json](./workflow_json/lead_processor_workflow.json)
 
 #### Screenshots
- - ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png)(Trigger form - Tally)
- - ![Main workflow on n8n](./screenshots/lead_processor_workflow.png)(Main workflow on n8n)
- - ![Airtable Storage](./screenshots/lead_processor_airtable.png)(Airtable Storage)
- - ![Slack notification](./screenshots/lead_processor_slack.png)(Slack notification)
+### - ![Main workflow on n8n](./screenshots/lead_processor_workflow.png)(Main workflow on n8n)
+### - ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png)(Trigger form - Tally)
+### - ![Airtable Storage](./screenshots/lead_processor_airtable.png)(Airtable Storage)
+### - ![Slack notification](./screenshots/lead_processor_slack.png)(Slack notification)
 
 
 ---

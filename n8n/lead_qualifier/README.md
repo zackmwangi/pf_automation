@@ -23,7 +23,7 @@ The project source code is available in json format here [./workflow_json/lead_p
 ---
 ### ![Trigger form - Tally](./screenshots/lead_processor_form_tally.png) Trigger form - Tally
 
-The form is available here [https://tally.so/r/3ERgrl] (https://tally.so/r/3ERgrl)
+The form is [< available here >] (https://tally.so/r/3ERgrl)
 
 ---
 ### ![Airtable Storage](./screenshots/lead_processor_airtable.png) (Airtable Storage)

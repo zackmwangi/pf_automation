@@ -1,0 +1,650 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1184,
+        64
+      ],
+      "id": "26c57d6e-a8ea-4cef-9aa0-77eacae4de1e",
+      "name": "Webhook",
+      "webhookId": "4932f474-8036-4f37-b8ea-25a800214839",
+      "notesInFlow": true,
+      "alwaysOutputData": false,
+      "notes": "Triggers the initial processing of the workflow when a lead submits a form"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appkLyDCnnU9G7yEj",
+          "mode": "list",
+          "cachedResultName": "leads_base",
+          "cachedResultUrl": "https://airtable.com/appkLyDCnnU9G7yEj"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblGC5Td4mK1fDObY",
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://airtable.com/appkLyDCnnU9G7yEj/tblGC5Td4mK1fDObY"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "full_name",
+              "displayName": "full_name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "budget",
+              "displayName": "budget",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "interest_level",
+              "displayName": "interest_level",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company_size",
+              "displayName": "company_size",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lead_score_label",
+              "displayName": "lead_score_label",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lead_score_value",
+              "displayName": "lead_score_value",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "source",
+              "displayName": "source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -288,
+        64
+      ],
+      "id": "3c52f8c1-d8fe-453a-8a1b-3932eddd099d",
+      "name": "store_lead",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "vKjuXZT8roF8tyP0",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8374105e-7d90-42c7-8190-7b9eaa1c59f6",
+              "leftValue": "={{ $json.fields.lead_score_label }}",
+              "rightValue": "Hot",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -64,
+        -32
+      ],
+      "id": "6e543bfa-3c23-4711-9be2-afb00bdb1a0c",
+      "name": "notify_sales?",
+      "notesInFlow": true,
+      "notes": "decide if to notify sales team or not"
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -64,
+        160
+      ],
+      "id": "f5820420-9998-4838-bb3a-f1e25a577d90",
+      "name": "pause_before_follow_up",
+      "webhookId": "7eb2fb33-5a14-4ccd-92d1-66d929ca1e90",
+      "notesInFlow": true,
+      "notes": "2 minute delay before following up the lead via email"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09B73M5MRT",
+          "mode": "list",
+          "cachedResultName": "hotlead"
+        },
+        "text": "=New hot lead with Budget £{{ $json.fields.budget }}, Interest:{{ $json.fields.interest_level }} - Check Airtable for details!",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        160,
+        -32
+      ],
+      "id": "9b62f3a7-78d9-4fb1-a808-3060480cb726",
+      "name": "notify_sales_team",
+      "webhookId": "32f91f0e-1135-4599-8a0a-e648b5cc5571",
+      "notesInFlow": true,
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "ASHSHJyBon0w65qI",
+          "name": "Slack account"
+        }
+      },
+      "notes": "Notify sales team of a new HOT lead"
+    },
+    {
+      "parameters": {
+        "fromEmail": "sales@nacha.life",
+        "toEmail": "={{ $json.fields.email }}",
+        "subject": "Test n8n",
+        "emailFormat": "text",
+        "text": "simple test",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        160,
+        160
+      ],
+      "id": "30200747-1645-4ec3-83c0-e6a4b4ed7279",
+      "name": "Send email",
+      "webhookId": "964f348d-e64e-4386-845b-8c8d15dc8875",
+      "credentials": {
+        "smtp": {
+          "id": "Z9PhbStScWhSTRWQ",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "020c782f-565b-4a1b-9055-ee361eec73dc",
+              "leftValue": "={{ $json.full_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "cc2946a3-e22a-4c52-a319-ccf6a8c7b2a4",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ae85fc94-d4f5-4563-8453-8c12765829c1",
+              "leftValue": "={{ $json.budget }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "25e692f0-d729-40e7-85d3-be48b1c9c71d",
+              "leftValue": "={{ $json.interest_level }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "a648defc-5033-4717-9f98-e96433accbf4",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "@",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "f63b1dd4-22bd-4ed4-9f36-c28846e65968",
+              "leftValue": "={{ $json.source }}",
+              "rightValue": "tally",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -736,
+        64
+      ],
+      "id": "b7b807ae-2381-4b18-ac48-d1e77da5ba58",
+      "name": "validate_form",
+      "notesInFlow": true,
+      "notes": "ensure required fields are filled"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b0a4c46c-55e7-416a-beae-c5c41880b848",
+              "name": "full_name",
+              "value": "={{ $json.body.data.fields[0].value }}",
+              "type": "string"
+            },
+            {
+              "id": "254335ab-d81d-4521-8ede-07ac53832389",
+              "name": "email",
+              "value": "={{ $json.body.data.fields[1].value }}",
+              "type": "string"
+            },
+            {
+              "id": "7563e2fa-9b49-4e62-8307-a78dfa05a551",
+              "name": "phone",
+              "value": "={{ $json.body.data.fields[2].value }}",
+              "type": "string"
+            },
+            {
+              "id": "1bdd726d-4901-4911-857b-d91c89816045",
+              "name": "budget",
+              "value": "={{ $json.body.data.fields[3].value }}",
+              "type": "number"
+            },
+            {
+              "id": "3293462c-6828-45c1-8fed-cbec6af934b6",
+              "name": "interest_level",
+              "value": "={{ $json.body.data.fields[4].value[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "ea1016a2-7683-480a-8963-4053a7ef9f61",
+              "name": "company_size",
+              "value": "={{ $json.body.data.fields[5].value }}",
+              "type": "number"
+            },
+            {
+              "id": "1154f1d8-cd44-43c8-8c4e-d669fe975c0e",
+              "name": "source",
+              "value": "=tally",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -960,
+        64
+      ],
+      "id": "e048ac88-6abe-407c-8d0f-89b5c0cc6e66",
+      "name": "adapt_form_tally",
+      "notesInFlow": true,
+      "notes": "remove tally metadata and use only relevant form data"
+    },
+    {
+      "parameters": {
+        "jsCode": "let workFlowInputs = $input.all()\n//\nlet leadScoreValue = 0\nlet leadScoreReasons = []\n//\nlet budgetNum = workFlowInputs[0].json.budget\nlet interestLevelRaw =  workFlowInputs[0].json.interest_level\n\n//Calculate score - Bump value for increased budget and high level of interest\n//1: Bump for Budget\nif (budgetNum >= 5000) { \n  leadScoreValue += 60;\n  leadScoreReasons.push('budget>=5000:+60');\n}\nelse if (budgetNum >= 2000) {\n  leadScoreValue += 35;\n  leadScoreReasons.push('2000<=budget<5000:+35'); \n}\nelse { \n  leadScoreValue += 10;\n  leadScoreReasons.push('budget<2000:+10'); \n}\n\n//2: Bump for interest Level and normalize interest level string\nif (interestLevelRaw === '9021ccf8-6378-44b7-92e7-259b3c2b1881') { leadScoreValue += 35; leadScoreReasons.push('interest=High:+35');\nworkFlowInputs[0].json.interest_level = 'High';}\n  else if (interestLevelRaw === '3bceaf33-a13f-4856-9010-5dde1e1ec2ff') { leadScoreValue += 20; leadScoreReasons.push('interest=Medium:+20');\nworkFlowInputs[0].json.interest_level = 'Medium';}\n  else { leadScoreValue += 5; leadScoreReasons.push('interest=Low:+5'); \n       workFlowInputs[0].json.interest_level = 'Low';\n}\n\n//3: TODO: Bump for a preferred company size??\n\n//Assign Lead score value rating\n/*\n80+ -> Hot\n50-79 -> Warm\n0-49 -> Cold\n*/\nconst leadScoreLabel = leadScoreValue >= 80 ? 'Hot' : (leadScoreValue >= 50 ? 'Warm' : 'Cold');\n\n//Append lead score info to the output\nworkFlowInputs[0].json.lead_score_value = leadScoreValue\nworkFlowInputs[0].json.lead_score_label = leadScoreLabel\n//workFlowInputs[0].json.lead_score_reason = leadScoreReasons[0]\n\nreturn workFlowInputs;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -512,
+        64
+      ],
+      "id": "01cba3a0-a5b5-49f7-a52d-7d4ab656ef09",
+      "name": "assign_lead_score",
+      "notesInFlow": true,
+      "notes": "Calculate and assign lead score and value"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "zackmwangi.app.n8n.cloud",
+            "user-agent": "Tally Webhooks",
+            "content-length": "1166",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, br",
+            "baggage": "sentry-environment=production,sentry-release=22e7edb209ee6c66fe01d71542019af328714a8f,sentry-public_key=6af4b6673f1648edaa8fef3f2ca43405,sentry-trace_id=06565aab82402b47d0c7b2a96f59807b,sentry-org_id=407628,sentry-sampled=false,sentry-sample_rand=0.13541681934430172,sentry-sample_rate=0.001",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "34.96.41.206",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "BE",
+            "cf-ray": "9724d4e61729db2e-LHR",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "sentry-trace": "06565aab82402b47d0c7b2a96f59807b-a340c4e52d61cd29-0",
+            "x-forwarded-for": "34.96.41.206, 172.71.178.125",
+            "x-forwarded-host": "zackmwangi.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-85-bb845fb9-5h7qt",
+            "x-is-trusted": "yes",
+            "x-real-ip": "34.96.41.206"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "eventId": "cbebddfd-7fa5-4062-bb95-de9279a52c53",
+            "eventType": "FORM_RESPONSE",
+            "createdAt": "2025-08-20T21:02:26.169Z",
+            "data": {
+              "responseId": "yP0lqqW",
+              "submissionId": "yP0lqqW",
+              "respondentId": "lP0R9N",
+              "formId": "3ERgrl",
+              "formName": "Let us know your interests!",
+              "createdAt": "2025-08-20T21:02:26.000Z",
+              "fields": [
+                {
+                  "key": "question_a2x2Qb",
+                  "label": "full_name",
+                  "type": "INPUT_TEXT",
+                  "value": "Dav jk"
+                },
+                {
+                  "key": "question_6ZkZDJ",
+                  "label": "email",
+                  "type": "INPUT_EMAIL",
+                  "value": "zackmwangi@gmail.com"
+                },
+                {
+                  "key": "question_7NDNXR",
+                  "label": "phone",
+                  "type": "INPUT_PHONE_NUMBER",
+                  "value": "+254756483677"
+                },
+                {
+                  "key": "question_bWkWZZ",
+                  "label": "budget",
+                  "type": "INPUT_NUMBER",
+                  "value": 9009
+                },
+                {
+                  "key": "question_ABJBrz",
+                  "label": "interest_level",
+                  "type": "DROPDOWN",
+                  "value": [
+                    "3bceaf33-a13f-4856-9010-5dde1e1ec2ff"
+                  ],
+                  "options": [
+                    {
+                      "id": "9021ccf8-6378-44b7-92e7-259b3c2b1881",
+                      "text": "High"
+                    },
+                    {
+                      "id": "3bceaf33-a13f-4856-9010-5dde1e1ec2ff",
+                      "text": "Medium"
+                    },
+                    {
+                      "id": "8aebbb78-5b53-4d58-9652-02fe917ba77b",
+                      "text": "Low"
+                    }
+                  ]
+                },
+                {
+                  "key": "question_Bx1xEK",
+                  "label": "company_size",
+                  "type": "INPUT_NUMBER",
+                  "value": 233
+                },
+                {
+                  "key": "question_kNANbe_fe39a777-8e69-4a52-b4cf-2817b373c606",
+                  "label": "source",
+                  "type": "HIDDEN_FIELDS",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "webhookUrl": "https://zackmwangi.app.n8n.cloud/webhook-test/lead-webhook",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "adapt_form_tally",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "store_lead": {
+      "main": [
+        [
+          {
+            "node": "notify_sales?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "pause_before_follow_up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "notify_sales?": {
+      "main": [
+        [
+          {
+            "node": "notify_sales_team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pause_before_follow_up": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "adapt_form_tally": {
+      "main": [
+        [
+          {
+            "node": "validate_form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "validate_form": {
+      "main": [
+        [
+          {
+            "node": "assign_lead_score",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "assign_lead_score": {
+      "main": [
+        [
+          {
+            "node": "store_lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "c584f27a-81b7-497e-9f0f-8de86e4b84e7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8883109e24ec4d258f30f64de8a72bb917c662f8b9217f1c3632fc0d6cc416c5"
+  },
+  "id": "0vLVufLvSDrmZ8rU",
+  "tags": []
+}
